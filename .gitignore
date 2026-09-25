@@ -1,0 +1,21 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# Logs and local data
+*.log
+.data/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

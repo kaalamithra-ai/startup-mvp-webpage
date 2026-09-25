@@ -1,0 +1,225 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 110px 20px;
+  background: #030817;
+}
+
+.backgroundGrid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 40%,
+    #000 0%,
+    transparent 75%
+  );
+}
+
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.glowBlue {
+  top: -120px;
+  left: -120px;
+  width: 460px;
+  height: 460px;
+  background: #256dff;
+  opacity: 0.14;
+}
+
+.glowPurple {
+  top: 30%;
+  right: -160px;
+  width: 480px;
+  height: 480px;
+  background: #7a4bff;
+  opacity: 0.13;
+}
+
+.glowPink {
+  bottom: -140px;
+  left: 30%;
+  width: 460px;
+  height: 460px;
+  background: #ff3cb5;
+  opacity: 0.1;
+}
+
+.container {
+  width: min(1280px, calc(100% - 40px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.headingWrapper {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 60px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #c4d6ff;
+  border: 1px solid rgba(88, 142, 255, 0.35);
+  background: rgba(42, 121, 255, 0.08);
+}
+
+.headingWrapper h2 {
+  margin-top: 20px;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.headingWrapper h2 span {
+  display: block;
+  margin-top: 4px;
+  background: linear-gradient(90deg, #5ea2ff, #b06bff, #ff6fd0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.headingWrapper p {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 1.02rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    160deg,
+    rgba(17, 26, 70, 0.7),
+    rgba(8, 12, 38, 0.85)
+  );
+  transition: transform 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(140, 170, 255, 0.3);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
+}
+
+.iconStage {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 20px;
+}
+
+.iconGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: #2a79ff;
+  opacity: 0.22;
+  filter: blur(14px);
+}
+
+.iconBox {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #2a79ff, #8a3bff 60%, #ff3cb5);
+  box-shadow: 0 10px 26px rgba(138, 59, 255, 0.35);
+}
+
+.card h4 {
+  font-size: 1.14rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.94rem;
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: #7fb6ff;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: color 0.25s ease, gap 0.25s ease;
+}
+
+.linkButton:hover {
+  color: #ffffff;
+  gap: 12px;
+}
+
+/* Accent variants shift the icon gradient tint */
+.accentPurple .iconBox {
+  background: linear-gradient(135deg, #8a3bff, #c04bff);
+}
+
+.accentPink .iconBox {
+  background: linear-gradient(135deg, #ff3cb5, #ff7ac8);
+}
+
+.accentCyan .iconBox {
+  background: linear-gradient(135deg, #1fc6ff, #2a79ff);
+}
+
+.accentGold .iconBox {
+  background: linear-gradient(135deg, #ffb43c, #ff6a3c);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 84px 20px;
+  }
+}

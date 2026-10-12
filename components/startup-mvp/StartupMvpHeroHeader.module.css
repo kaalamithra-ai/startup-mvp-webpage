@@ -1,0 +1,775 @@
+/* =========================================================
+   TOP HERO HEADER
+   Pinned to the very top of the hero, above all hero art.
+   ========================================================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  /* Solid dark bar (not the old fading gradient) so the navbar stays
+     legible as it hovers over the dark hero AND the lighter sections
+     further down the page. The <body> reserves matching space via
+     --header-offset so content never slides underneath. */
+  background: rgba(3, 7, 18, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   LOGO (top-left)
+   ========================================================= */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logoImage {
+  display: block;
+  width: auto;
+  height: 3.5rem;
+  max-width: min(260px, 50vw);
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35));
+}
+
+
+/* =========================================================
+   ACTION ICONS (top-right)
+   ========================================================= */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.whatsappButton,
+.sparkleButton,
+.menuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.whatsappButton:hover,
+.sparkleButton:hover,
+.menuButton:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.whatsappButton:focus-visible,
+.sparkleButton:focus-visible,
+.menuButton:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+.whatsappIcon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+
+/* =========================================================
+   FLOATING WHATSAPP WIDGET (bottom-right)
+   Fixed to the viewport so it stays available while scrolling.
+   Rendered via a portal to <body> (the header's backdrop-filter
+   would otherwise contain a fixed child).
+   ========================================================= */
+
+.whatsappFab {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: 3.5rem;
+  padding: 0 1.25rem 0 1rem;
+  border: none;
+  border-radius: 9999px;
+  background: #25d366;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.whatsappFab:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 38px rgba(37, 211, 102, 0.55);
+}
+
+.whatsappFab:focus-visible {
+  outline: 3px solid #a855f7;
+  outline-offset: 3px;
+}
+
+.whatsappFabIcon {
+  flex-shrink: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.whatsappFabLabel {
+  white-space: nowrap;
+}
+
+/* Collapse to an icon-only round button on small screens so it never
+   crowds the content or other floating elements. */
+@media (max-width: 600px) {
+  .whatsappFab {
+    right: 1rem;
+    bottom: 1rem;
+    height: 3.25rem;
+    width: 3.25rem;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .whatsappFabIcon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .whatsappFabLabel {
+    display: none;
+  }
+}
+
+/* Sparkle — purple gradient circular container */
+.sparkleButton {
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  box-shadow: 0 6px 16px rgba(168, 85, 247, 0.4);
+}
+
+/* Hamburger — dark rounded square container */
+.menuButton {
+  border-radius: 0.8rem;
+  background: rgba(17, 24, 39, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .header {
+    padding: 1rem 1rem;
+  }
+
+  .whatsappButton,
+  .sparkleButton,
+  .menuButton {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .logoImage {
+    height: 2.75rem;
+    max-width: min(200px, 52vw);
+  }
+
+  .actions {
+    gap: 0.55rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .logoImage {
+    height: 2.4rem;
+    max-width: min(150px, 50vw);
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY / REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsappButton,
+  .sparkleButton,
+  .menuButton {
+    transition: none;
+  }
+
+  .whatsappButton:hover,
+  .sparkleButton:hover,
+  .menuButton:hover {
+    transform: none;
+  }
+
+  .whatsappFab {
+    transition: none;
+  }
+
+  .whatsappFab:hover {
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   HAMBURGER ICON (three lines) — inside menu button
+   ========================================================= */
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 18px;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   NAVIGATION DRAWER / DROPDOWN
+   ========================================================= */
+
+.drawerWrap {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 7, 18, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.drawer {
+  position: absolute;
+  top: 5.25rem;
+  right: 1.5rem;
+  z-index: 1;
+  width: min(360px, calc(100vw - 3rem));
+  max-height: calc(100vh - 7rem);
+  overflow-y: auto;
+  padding: 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
+  background: rgba(15, 23, 42, 0.96);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(18px);
+  outline: none;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+
+.drawerTitle {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.drawerClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.7rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e7eb;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.drawerClose:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.drawerClose:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.navLink {
+  --accent: #3b82f6;
+  --accent-strong: #2563eb;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 0.9rem;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  transform: translateX(3px);
+}
+
+.navLink:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+.navIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: 0.8rem;
+  color: var(--accent);
+  background: linear-gradient(
+    140deg,
+    color-mix(in srgb, var(--accent) 26%, transparent),
+    color-mix(in srgb, var(--accent) 8%, transparent)
+  );
+}
+
+.navText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.navLabel {
+  font-size: 0.98rem;
+  font-weight: 750;
+  color: #f8fafc;
+  line-height: 1.2;
+}
+
+.navDescription {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: #94a3b8;
+  line-height: 1.3;
+}
+
+.navArrow {
+  flex-shrink: 0;
+  color: #64748b;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.navLink:hover .navArrow {
+  transform: translateX(3px);
+  color: var(--accent);
+}
+
+.accentBlue {
+  --accent: #3b82f6;
+  --accent-strong: #2563eb;
+}
+
+.accentGold {
+  --accent: #f59e0b;
+  --accent-strong: #d97706;
+}
+
+.accentGreen {
+  --accent: #22c55e;
+  --accent-strong: #16a34a;
+}
+
+.accentPurple {
+  --accent: #a855f7;
+  --accent-strong: #7c3aed;
+}
+
+
+/* =========================================================
+   DRAWER FOOTER ACTIONS
+   ========================================================= */
+
+.drawerFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.drawerCta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 2.85rem;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 0.85rem;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(124, 58, 237, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.drawerCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(124, 58, 237, 0.5);
+}
+
+.drawerCta:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+.drawerWhatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 2.7rem;
+  padding: 0 1rem;
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  border-radius: 0.85rem;
+  background: rgba(37, 211, 102, 0.14);
+  color: #86efac;
+  font-size: 0.9rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.drawerWhatsapp:hover {
+  background: rgba(37, 211, 102, 0.22);
+  transform: translateY(-2px);
+}
+
+.drawerWhatsapp:focus-visible {
+  outline: 2px solid #22c55e;
+  outline-offset: 2px;
+}
+
+.drawerWhatsapp .whatsappIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+
+/* =========================================================
+   DRAWER RESPONSIVE + REDUCED MOTION
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .drawer {
+    top: 5rem;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawerClose,
+  .drawerCta,
+  .drawerWhatsapp,
+  .navLink,
+  .navArrow {
+    transition: none;
+  }
+
+  .navLink:hover,
+  .drawerCta:hover,
+  .drawerWhatsapp:hover,
+  .drawerClose:hover {
+    transform: none;
+  }
+
+  .navLink:hover .navArrow {
+    transform: none;
+  }
+}
+
+
+/* =========================================================
+   CONTACT MODAL
+   ========================================================= */
+
+.contactOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.contactModal {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  max-height: calc(100vh - 3rem);
+  overflow-y: auto;
+  padding: 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.4rem;
+  background: rgba(15, 23, 42, 0.97);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(18px);
+  outline: none;
+}
+
+.contactHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.15rem;
+}
+
+.contactEyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #a855f7;
+}
+
+.contactTitle {
+  margin: 0.3rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.25;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.contactRow {
+  --accent: #3b82f6;
+  --accent-strong: #2563eb;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.8rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+  border-radius: 1rem;
+  background: linear-gradient(
+    140deg,
+    color-mix(in srgb, var(--accent) 14%, transparent),
+    color-mix(in srgb, var(--accent) 5%, transparent)
+  );
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.contactRow:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.contactRow:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 2px;
+}
+
+.contactIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent) inset;
+}
+
+.contactGlyph {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.contactInfo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.contactLabel {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.contactValue {
+  font-size: 1rem;
+  font-weight: 750;
+  color: #f1f5f9;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.contactArrow {
+  flex-shrink: 0;
+  color: #64748b;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.contactRow:hover .contactArrow {
+  transform: translateX(3px);
+  color: var(--accent);
+}
+
+.contactWhatsapp {
+  --accent: #22c55e;
+  --accent-strong: #16a34a;
+}
+
+.contactPhone {
+  --accent: #3b82f6;
+  --accent-strong: #2563eb;
+}
+
+.contactEmail {
+  --accent: #a855f7;
+  --accent-strong: #7c3aed;
+}
+
+.contactCta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 2.85rem;
+  margin-top: 1.15rem;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 0.9rem;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(34, 197, 94, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contactCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(34, 197, 94, 0.5);
+}
+
+.contactCta:focus-visible {
+  outline: 2px solid #22c55e;
+  outline-offset: 2px;
+}
+
+.contactCta .whatsappIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contactRow,
+  .contactArrow,
+  .contactCta {
+    transition: none;
+  }
+
+  .contactRow:hover,
+  .contactCta:hover {
+    transform: none;
+  }
+
+  .contactRow:hover .contactArrow {
+    transform: none;
+  }
+}
+
+
+
+
